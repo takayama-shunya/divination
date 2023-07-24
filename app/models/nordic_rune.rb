@@ -1,0 +1,2 @@
+class NordicRune < ApplicationRecord
+end
