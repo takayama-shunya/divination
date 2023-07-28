@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # devination rune
-  get "/devination_rune", to: "devination#index"
+  get "/devination_rune", to: "nordic_rune#index"
+  post "/devination_rune", to: "nordic_rune#devination_result",  as: :devination_rune_result
 
 end

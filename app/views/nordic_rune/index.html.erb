@@ -1,0 +1,33 @@
+<h2>ルーン占い</h2>
+
+<%= form_tag devination_rune_result_path, method: :post do %>
+  <button class="btn btn-primary">
+    占う
+  </button>
+
+  <% if @rune %>
+    <div>
+      <p class="alert alert-primary">【名前】</p>
+      <p class="p-2"><%= @rune.name %></p>
+    </div>
+    <div>
+      <p>【アルファベット】</p>
+      <p><%= @rune.latin_letters_transcription %></p>
+    <div>
+      <p>【意味】</p>
+      <p><%= @rune.meaning %></p>
+    </div>
+    <div>
+      <p>【色】</p>
+      <p><%= @rune.color %></p>
+    </div>
+    <div>
+      <p>【解釈】</p>
+      <% if @normal_position %>
+        <p><%= @rune.normal_position %></p>
+      <% else %>
+        <p><%= @rune.inverted_position %></p>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
