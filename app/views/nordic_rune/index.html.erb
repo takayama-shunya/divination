@@ -1,32 +1,42 @@
-<h2>ルーン占い</h2>
+<h2 class="p-2">ルーン占い</h2>
 
 <%= form_tag devination_rune_result_path, method: :post do %>
-  <button class="btn btn-primary">
-    占う
-  </button>
+  <div class="p-3">
+    <button class="btn btn-primary">
+      占う
+    </button>
+  </div>
 
   <% if @rune %>
-    <div>
-      <p class="alert alert-primary">【名前】</p>
-      <p class="p-2"><%= @rune.name %></p>
+    <div class="ps-3">
+      <p class="letter-area">
+        <span class="<%= 'reverse' unless @normal_position %>">
+          <%= render partial: 'nordic_rune/rune_view', locals: { rune: @rune } %>
+        </span>
+      </p>
     </div>
-    <div>
+    <div class="ps-3">
+      <p>【名前】</p>
+      <p class="ps-3"><%= @rune.name %></p>
+    </div>
+    <div class="ps-3">
       <p>【アルファベット】</p>
-      <p><%= @rune.latin_letters_transcription %></p>
-    <div>
+      <p class="ps-3"><%= @rune.latin_letters_transcription %></p>
+    </div>
+    <div class="ps-3">
       <p>【意味】</p>
-      <p><%= @rune.meaning %></p>
+      <p class="ps-3"><%= @rune.meaning %></p>
     </div>
-    <div>
+    <div class="ps-3">
       <p>【色】</p>
-      <p><%= @rune.color %></p>
+      <p class="ps-3"><%= @rune.color %></p>
     </div>
-    <div>
+    <div class="ps-3">
       <p>【解釈】</p>
       <% if @normal_position %>
-        <p><%= @rune.normal_position %></p>
+        <p class="ps-3">・正位置<br><%= @rune.normal_position %></p>
       <% else %>
-        <p><%= @rune.inverted_position %></p>
+        <p class="ps-3">・逆位置<br><%= @rune.inverted_position %></p>
       <% end %>
     </div>
   <% end %>
