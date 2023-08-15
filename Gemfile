@@ -53,6 +53,10 @@ gem 'mini_racer'
 # Use Sass to process CSS
 gem "sassc-rails"
 
+# Use login
+gem "devise", "~> 4.8.0"
+gem "devise-i18n"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
