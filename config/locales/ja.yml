@@ -1,0 +1,29 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: "名前"
+        nickname: "ニックネーム"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認用）"
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "%{attribute}は必須です。"
+              too_long: "%{attribute}は50文字以下で入力してください。"
+            nickname:
+              blank: "%{attribute}は必須です。"
+              too_long: "%{attribute}は50文字以下で入力してください。"
+            email:
+              blank: "%{attribute}は必須です。"
+              too_long: "%{attribute}は100文字以下で入力してください。"
+            password:
+              blank: "%{attribute}は必須です。"
+              too_short: "%{attribute}は8文字以上で入力してください。"
+              too_long: "%{attribute}は128文字以下で入力してください。"
+              invalid: "%{attribute}はアルファベット、大文字アルファベット、数字が1文字ずつ含まれる必要があります。"
+            password_confirmation:
+              confirmation: "パスワードと一致しません。" 
