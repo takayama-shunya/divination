@@ -13,6 +13,9 @@ module App
 
     config.i18n.default_locale = :ja
 
+    # .envファイルを読み込む
+    Dotenv::Railtie.load
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
