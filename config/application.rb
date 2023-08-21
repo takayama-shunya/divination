@@ -13,6 +13,8 @@ module App
 
     config.i18n.default_locale = :ja
 
+    config.react.server_renderer_extensions = ["jsx", "js", "tsx", "ts"]
+
     # .envファイルを読み込む
     Dotenv::Railtie.load
 
