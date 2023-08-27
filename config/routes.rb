@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get "/devination_rune", to: "nordic_rune#index"
   post "/devination_rune", to: "nordic_rune#devination_result",  as: :devination_rune_result
 
+  # scout
+  get  "/scount/new", to: "scouts#new", as: :new_scout
+
 end

@@ -11,7 +11,10 @@
             <%= link_to current_user.nickname, user_path(current_user), class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <%= link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            <%= link_to 'scout new', new_scout_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Log Out', destroy_user_session_path, class: 'nav-link' %>
           </li>
         <% else %>
           <li class="nav-item">
