@@ -1,0 +1,2 @@
+class Compay < ApplicationRecord
+end
