@@ -710,3 +710,27 @@
   height: 1em;
   vertical-align: -0.125em;
 }
+
+.datepicker__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  font-weight: bold;
+}
+
+.datepicker__header-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.datepicker__header-date__year {
+  margin-right: 7px;
+}
+
+.datepicker__button {
+  font-size: 1.25em;
+  color: #757575;
+}

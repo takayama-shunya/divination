@@ -18,6 +18,7 @@
     "compression-webpack-plugin": "9",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
+    "dayjs": "^1.11.9",
     "fork-ts-checker-webpack-plugin": "^8.0.0",
     "framer-motion": "^6",
     "mini-css-extract-plugin": "^2.7.6",
