@@ -60,6 +60,9 @@ export default function ScoutNewForm() {
           </FormControl>
 
           <FormControl>
+          </FormControl>
+
+          <FormControl>
             <InputLabel variant="standard" htmlFor="place">
               場所
             </InputLabel>

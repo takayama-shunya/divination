@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_27_033539) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_10_082753) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_033539) do
     t.string "group_name", limit: 50, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorite_stores", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "store_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["store_id"], name: "index_favorite_stores_on_store_id"
+    t.index ["user_id"], name: "index_favorite_stores_on_user_id"
   end
 
   create_table "nordic_runes", force: :cascade do |t|
@@ -62,6 +71,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_033539) do
     t.string "url_path", limit: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "to_tsvector('english'::regconfig, (name)::text)", name: "stores_idx", using: :gin
     t.index ["company_id"], name: "index_stores_on_company_id"
     t.index ["prefecture_id"], name: "index_stores_on_prefecture_id"
   end
@@ -94,6 +104,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_27_033539) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "favorite_stores", "stores"
+  add_foreign_key "favorite_stores", "users"
   add_foreign_key "scores", "stores"
   add_foreign_key "scores", "users"
   add_foreign_key "stores", "companies"

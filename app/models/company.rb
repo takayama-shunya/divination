@@ -1,2 +1,2 @@
-class Compay < ApplicationRecord
+class Company < ApplicationRecord
 end
