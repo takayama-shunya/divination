@@ -8,6 +8,13 @@ export const ScoutNewFormSchema = z.object({
  
    
   // 数値に変換してからバリデーションをかける
+  store: z.preprocess(
+    (val) => Number(val),
+    z
+      .number()
+      .min(1, { message: '店舗を選択してください' })
+  ),
+      
   place: z.preprocess(
     (val) => Number(val),
     z

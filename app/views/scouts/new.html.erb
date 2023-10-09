@@ -1,3 +1,12 @@
 <h1>記録作成</h1>
+<% @favorite_stores.each do |item| %>
+  <%= item.name %>
+<% end %>
 
-<%= react_component("ScoutNewForm") %>
+
+<%= react_component(
+  "ScoutNewForm", 
+  { favoriteStores: @favorite_stores.to_json.html_safe,
+    msg: "test"
+  }
+) %>

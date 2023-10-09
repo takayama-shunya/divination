@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"; 
-import { ScoutNewFormSchema, ScoutNewFormSchemaValidate } from "../components/validate/ScoutNewFormSchema";
 import {
   Button, Checkbox, Container, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel, InputLabel, MenuItem, NativeSelect, Radio, RadioGroup, Select, Stack, TextField
 } from '@mui/material';
@@ -11,31 +10,47 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-type formType = {
-  date: Date,
-  place: number,
+import { ScoutNewFormSchema, ScoutNewFormSchemaValidate } from "../components/validate/ScoutNewFormSchema";
+import SearchStore from "../components/SearchStore";
+import StoreModal from "../components/StoreModal";
+
+
+type Props = {
+  favoriteStores: any,
 }
 
+type TestProps = {
+  msg: string,
+}
 
+export const ScoutNewForm: React.FC<TestProps> = (props) => {
 
+  // 店舗表示用
+  let favoriteStores = JSON.parse(props.favoriteStores);
 
-export default function ScoutNewForm() {
-  
+  // 表示設定、バリデーション
   const [value, setValue] = React.useState<Dayjs | null>(dayjs(new Date()));
 
   const { register, handleSubmit, formState: { errors } } = useForm<ScoutNewFormSchemaValidate>({
     resolver: zodResolver(ScoutNewFormSchema),
   });
 
+  // 送信
   const onSubmit = (data: ScoutNewFormSchemaValidate) => {
     console.log(data);
   };
 
-  // const { register, handleSubmit } = useForm<formType>()
+  // 店舗検索
+  const [searchText, setSearchText] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
 
-  // const onSubmit = (data: formType) => {
-  //   console.log(data)
-  // }
+  const favoriteStoredisplay = (favoriteStores) => {
+    openModal();
+    console.log(isModalOpen);
+  }
+
+  const { Modal, openModal, closeModal } = StoreModal();
 
   return (
     <Container maxWidth="sm">
@@ -58,6 +73,39 @@ export default function ScoutNewForm() {
             </FormHelperText>
             </LocalizationProvider>
           </FormControl>
+
+          <TextField
+              placeholder="店舗検索したい場合は入力してください"
+              value={searchText}
+              onClick={favoriteStoredisplay}
+              {...register("store")}
+            >
+          </TextField>
+            
+            <div style={{ margin: '2rem' }}>
+              <div>
+                <button onClick={openModal}>open modal</button>
+              </div>
+              <Modal>
+                <h2>content from children</h2>
+                <button onClick={closeModal}>close</button>
+              </Modal>
+            </div>
+
+            {/* <SearchStore favoriteStores={favoriteStores} />  */}
+
+          {/* <FormControl>
+            <InputLabel>店舗 お気に入り店舗がデフォルトで表示されます</InputLabel>
+            <NativeSelect
+              defaultValue={0}
+              {...register("store")}
+            >
+              <option value={0}>選択してください</option>
+              {favoriteStores.map((store) => (
+                <option key={store.id} value={store.id}>{store.name}</option>
+              ))}
+            </NativeSelect>
+          </FormControl> */}
 
           <FormControl>
           </FormControl>
@@ -91,3 +139,5 @@ export default function ScoutNewForm() {
     </Container>
   );
 }
+
+export default ScoutNewForm;

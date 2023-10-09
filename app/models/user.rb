@@ -11,4 +11,9 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 8, maximum: 128 }, format: { with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]+\z/ }
   validates :email, presence: true, length: { maximum: 100 }, uniqueness: true
 
+  # リレーション
+  has_many :favorite_stores
+  has_many :stores, through: :favorite_stores
+  
+
 end
